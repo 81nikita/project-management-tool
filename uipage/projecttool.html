@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Project Management Tool</h1>
+        <div class="project-form">
+            <input type="text" id="project-name" placeholder="Enter project name">
+            <button onclick="addProject()">Add Project</button>
+        </div>
+        <div id="projects-list" class="projects-list">
+            <!-- Projects will be added here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        function addProject() {
+            let projectName = document.getElementById("project-name").value;
+            if (projectName.trim() === "") return;
+            
+            let projectContainer = document.getElementById("projects-list");
+            let projectDiv = document.createElement("div");
+            projectDiv.className = "project-card";
+            projectDiv.innerHTML = `
+                <img src='1st.jpg' alt='Project Image' class='project-image'>
+                <h2>${projectName}</h2>
+                <p>Description of the project goes here. You can add tasks and manage progress.</p>
+                <ul class='tasks'></ul>
+                <input type='text' class='task-input' placeholder='Add task'>
+                <button onclick='addTask(this)'>Add Task</button>
+            `;
+            projectContainer.appendChild(projectDiv);
+            document.getElementById("project-name").value = "";
+        }
+        
+        function addTask(button) {
+            let taskInput = button.previousElementSibling;
+            let taskText = taskInput.value;
+            if (taskText.trim() === "") return;
+            
+            let taskList = button.parentElement.querySelector(".tasks");
+            let taskItem = document.createElement("li");
+            taskItem.textContent = taskText;
+            taskList.appendChild(taskItem);
+            taskInput.value = "";
+        }
+    </script>
+</body>
+</html>

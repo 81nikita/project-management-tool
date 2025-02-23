@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Project Management Tool</h1>
+        <div class="project-form">
+            <input type="text" id="project-name" placeholder="Enter project name">
+            <button onclick="addProject()">Add Project</button>
+        </div>
+        <div id="projects-list" class="projects-list">
+            <!-- Projects will be added here dynamically -->
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Task Management</li>
+            <li>Project Timeline</li>
+            <li>Collaboration Tools</li>
+            <li>File Sharing</li>
+            <li>Progress Tracking</li>
+        </ul>
+    </div>
+
+    <div class="tags">
+        <h2>Tags</h2>
+        <ul>
+            <li>Development</li>
+            <li>Design</li>
+            <li>Marketing</li>
+            <li>Research</li>
+            <li>Testing</li>
+        </ul>
+    </div>
+
+    <div class="tools">
+        <h2>Stored Tools & Information</h2>
+        <ul>
+            <li>Jira - Project Tracking</li>
+            <li>Trello - Task Management</li>
+            <li>Slack - Team Communication</li>
+            <li>Asana - Workflow Organization</li>
+            <li>GitHub - Version Control</li>
+        </ul>
+    </div>
+
+    <script>
+        function addProject() {
+            let projectName = document.getElementById("project-name").value;
+            if (projectName.trim() === "") return;
+            
+            let projectContainer = document.getElementById("projects-list");
+            let projectDiv = document.createElement("div");
+            projectDiv.className = "project-card";
+            projectDiv.innerHTML = `
+                <h2>${projectName}</h2>
+                <p>Project details and task management options.</p>
+            `;
+            projectContainer.appendChild(projectDiv);
+            document.getElementById("project-name").value = "";
+        }
+    </script>
+</body>
+</html>
